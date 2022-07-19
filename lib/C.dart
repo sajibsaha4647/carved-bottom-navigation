@@ -11,6 +11,9 @@ class _CState extends State<C> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.blue,
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       child: Text("C"),
     );
   }

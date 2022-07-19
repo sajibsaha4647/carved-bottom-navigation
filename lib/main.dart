@@ -1,5 +1,5 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-
 import 'A.dart';
 import 'B.dart';
 import 'C.dart';
@@ -29,10 +29,13 @@ class MyApp extends StatelessWidget {
 
   class _HomePageState extends State<HomePage> {
 
+    var page = 0;
+
     final pages = [
       A(),
       B(),
       C(),
+      D(),
       D()
     ];
 
@@ -42,9 +45,27 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text("Carved bottom navigation"),
           ),
-        body: Container(
-
+        bottomNavigationBar: CurvedNavigationBar(
+          index:0,
+          color: Colors.white,
+          buttonBackgroundColor: Colors.white,
+          backgroundColor: Colors.blue,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration( milliseconds: 500),
+          onTap: (index){
+           setState(() {
+             page = index ;
+           });
+          },
+          items: [
+              Icon(Icons.account_balance),
+              Icon(Icons.camera),
+              Icon(Icons.photo),
+              Icon(Icons.favorite_outline),
+              Icon(Icons.favorite_outline)
+        ],
         ),
+        body: pages[page],
       ));
     }
   }
